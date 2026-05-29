@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سعر الدولار اليوم في السودان</title>
+    <title>سعر الدولار اليوم</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -15,19 +15,44 @@
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            padding: 25px;
         }
         h1 {
-            color: #2e7d32;
-            margin-bottom: 10px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .main-price {
+            background: #16a34a;
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(22,163,74,0.3);
+        }
+        .main-price p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        .main-price .amount {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .change {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
         }
         .update-time {
-            color: #666;
-            margin-bottom: 25px;
-            font-size: 14px;
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 15px;
         }
         .currency {
             display: flex;
@@ -35,57 +60,55 @@
             align-items: center;
             padding: 15px 20px;
             margin: 10px 0;
-            background: #f8f9fa;
+            background: white;
             border-radius: 10px;
-            border-right: 5px solid #2e7d32;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .currency-name {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 16px;
             color: #333;
         }
         .price {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: bold;
-            color: #2e7d32;
+            color: #16a34a;
         }
         .flag {
-            font-size: 24px;
-            margin-left: 10px;
-        }
-        .note {
-            margin-top: 25px;
-            font-size: 12px;
-            color: #888;
+            margin-left: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>💵 أسعار العملات في السودان</h1>
-        <p class="update-time">آخر تحديث: الخميس، 29 مايو 2026 - 1:50 م</p>
+        <h1>سعر الدولار اليوم</h1>
+        <p class="subtitle">مقابل الجنيه السوداني - تحديث تلقائي كل ساعة</p>
         
-        <div class="currency">
-            <span class="currency-name"><span class="flag">🇺🇸</span> الدولار الأمريكي</span>
-            <span class="price">4,300</span>
+        <div class="main-price">
+            <p>1 دولار أمريكي يساوي</p>
+            <div class="amount">4,300 <span style="font-size: 20px;">جنيه</span></div>
+            <div class="change">▲ 0.00+ (0.00%)</div>
+            <div class="update-time">آخر تحديث: الخميس، 29 مايو 2026 في 1:50 ص</div>
         </div>
         
         <div class="currency">
-            <span class="currency-name"><span class="flag">🇸🇦</span> الريال السعودي</span>
-            <span class="price">1,140</span>
+            <span class="price">4,300.00</span>
+            <span class="currency-name">دولار أمريكي <span class="flag">🇺🇸</span></span>
         </div>
         
         <div class="currency">
-            <span class="currency-name"><span class="flag">🇦🇪</span> الدرهم الإماراتي</span>
-            <span class="price">1,171</span>
+            <span class="price">1,140.00</span>
+            <span class="currency-name">ريال سعودي <span class="flag">🇸🇦</span></span>
         </div>
         
         <div class="currency">
-            <span class="currency-name"><span class="flag">🇪🇺</span> اليورو</span>
-            <span class="price">5,058</span>
+            <span class="price">1,171.00</span>
+            <span class="currency-name">درهم إماراتي <span class="flag">🇦🇪</span></span>
         </div>
-
-        <p class="note">* الأسعار من السوق الموازي وقد تختلف بين الولايات حسب العرض والطلب</p>
+        
+        <div class="currency">
+            <span class="price">5,058.00</span>
+            <span class="currency-name">يورو <span class="flag">🇪🇺</span></span>
+        </div>
     </div>
 </body>
 </html>
