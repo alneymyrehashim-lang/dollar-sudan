@@ -1,0 +1,26 @@
+name: Update Prices
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update price file
+        run: |
+          echo "{
+            \"USD\": 605,
+            \"SAR\": 161,
+            \"AED\": 165,
+            \"EUR\": 660,
+            \"updated\": \"$(date -u +%Y-%m-%dT%H:00:00Z)\"
+          }" > prices.json
+      - name: Commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add prices.json
+          git commit -m "Auto update prices" || exit 0
+          git push
