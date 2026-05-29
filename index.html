@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سعر الدولار اليوم في السودان | تحديث لحظي</title>
+    <meta name="description" content="اعرف سعر الدولار والريال والدرهم مقابل الجنيه السوداني الآن - تحديث تلقائي كل ساعة مع حاسبة تحويل">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #15803d;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
+      .container { max-width: 680px; margin: 0 auto; padding: 16px; }
+      .header { text-align: center; padding: 24px 0 16px; }
+      .header h1 { font-size: 28px; font-weight: 900; color: var(--text); margin-bottom: 8px; }
+      .header p { color: var(--muted); font-size: 15px; }
+      .main-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 32px 24px; border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(22,163,74,0.3); text-align: center;
+            margin-bottom: 24px; position: relative; overflow: hidden;
+        }
+      .main-card::after {
+            content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shine 6s infinite linear;
+        }
+        @keyframes shine { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      .currency-label { font-size: 16px; opacity: 0.9; margin-bottom: 8px; }
+      .price { font-size: 52px; font-weight: 900; letter-spacing: -1px; margin: 8px 0; }
+      .price span { font-size: 24px; font-weight: 600; margin-right: 4px; }
+      .change { display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.2);
+            padding: 6px 12px; border-radius: 50px; font-size: 14px; font-weight: 600; }
+      .update { font-size: 13px; opacity: 0.8; margin-top: 16px; }
+      .rates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
+      .rate-item {
+            background: var(--card); border: 1px solid var(--border); padding: 16px;
+            border-radius: 16px; display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.2s ease;
+        }
+      .rate-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+      .rate-name { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+      .flag { font-size: 24px; }
+      .rate-value { font-weight: 700; font-size: 18px; color: var(--primary-dark); }
+      .calculator { background: var(--card); border: 1px solid var(--border); padding: 24px; border-radius: 20px; }
+      .calculator h2 { font-size: 18px; margin-bottom: 16px; font-weight: 700; }
+      .calc-row { display: grid; grid-template-columns: 1fr 120px; gap: 10px; margin-bottom: 12px; }
+      .calc-row input,.calc-row select {
+            width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 12px;
+            font-size: 18px; font-weight: 600; transition: border 0.2s;
+        }
+      .calc-row input:focus,.calc-row select:focus { outline: none; border-color: var(--primary); }
+      .calc-result {
+            background: var(--primary); color: white; padding: 16px; border-radius: 12px;
+            text-align: center; font-size: 18px; font-weight: 700; margin-top: 8px;
+        }
+      .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+      .btn {
+            padding: 16px; border-radius: 14px; text-decoration: none; text-align: center;
+            font-size: 16px; font-weight: 700; transition: all 0.2s; border: none; cursor: pointer;
+        }
+      .btn-whatsapp { background: #25D366; color: white; }
+      .btn-share { background: var(--bg); color: var(--text); border: 2px solid var(--border); }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+      .footer { text-align: center; padding: 32px 0 16px; color: var(--muted); font-size: 13px; }
+      .loader { text-align: center; padding: 60px 20px; color: var(--muted); }
+      .spinner {
+            width: 40px; height: 40px; border: 4px solid var(--border); border-top: 4px solid var(--primary);
+            border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @media (max-width: 480px) {
+          .price { font-size: 44px; }
+          .rates-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>سعر الدولار اليوم</h1>
+            <p>مقابل الجنيه السوداني - تحديث تلقائي كل ساعة</p>
+        </header>
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+            جاري تحميل الأسعار...
+        </div>
+        <main id="content" style="display:none;">
+            <div class="main-card">
+                <div class="currency-label">1 دولار أمريكي يساوي</div>
+                <div class="price" id="livePrice">-- <span>جنيه</span></div>
+                <div class="change" id="changeBox">▲ +0.00 (0.00%)</div>
+                <div class="update">آخر تحديث: <span id="time">--</span></div>
+            </div>
+            <div class="rates-grid" id="ratesGrid"></div>
+            <div class="calculator">
+                <h2>حاسبة تحويل العملات</h2>
+                <div class="calc-row">
+                    <input type="number" id="amount" value="100" placeholder="المبلغ">
+                    <select id="from"></select>
+                </div>
+                <div class="calc-row">
+                    <input type="text" id="result" readonly>
+                    <select id="to"></select>
+                </div>
+                <div class="calc-result" id="resultText">--</div>
+            </div>
+            <div class="btn-group">
+                <a href="https://wa.me/249912345678?text=داير سعر الدولار اليوم" class="btn btn-whatsapp">💬 واتساب</a>
+                <button class="btn btn-share" onclick="sharePrice()">🔗 مشاركة السعر</button>
+            </div>
+        </main>
+        <footer class="footer">
+            © 2026 سعر الدولار السودان - جميع الأسعار استرشادية
+        </footer>
+    </div>
+    <script>
+        let rates = {};
+        let prevRates = JSON.parse(localStorage.getItem('prevRates')) || {};
+        const currencies = [
+            { code: 'USD', name: 'دولار أمريكي', flag: '🇺🇸' },
+            { code: 'SAR', name: 'ريال سعودي', flag: '🇸🇦' },
+            { code: 'AED', name: 'درهم إماراتي', flag: '🇦🇪' },
+            { code: 'EUR', name: 'يورو', flag: '🇪🇺' }
+        ];
+        async function loadPrices() {
+            try {
+                const res = await fetch('./prices.json?v=' + Date.now());
+                const newRates = await res.json();
+                if(prevRates.USD) {
+                    const diff = newRates.USD - prevRates.USD;
+                    const percent = (diff / prevRates.USD * 100).toFixed(2);
+                    const changeEl = document.getElementById('changeBox');
+                    changeEl.innerHTML = `${diff >= 0? '▲' : '▼'} ${Math.abs(diff).toFixed(2)} (${percent}%)`;
+                    changeEl.style.background = diff >= 0? 'rgba(16,185,129,0.3)' : 'rgba(239,68,68,0.3)';
+                }
+                prevRates = rates;
+                rates = newRates;
+                localStorage.setItem('prevRates', JSON.stringify(rates));
+                renderUI();
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } catch (e) {
+                document.getElementById('loader').innerHTML = 'فشل التحميل. <a href="#" onclick="location.reload()">إعادة المحاولة</a>';
+            }
+        }
+        function renderUI() {
+            document.getElementById('livePrice').innerHTML = Math.round(rates.USD) + ' <span>جنيه</span>';
+            document.getElementById('time').innerText = new Date(rates.updated).toLocaleString('ar-SD', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+            const grid = document.getElementById('ratesGrid');
+            grid.innerHTML = currencies.map(c => `
+                <div class="rate-item">
+                    <div class="rate-name"><span class="flag">${c.flag}</span> ${c.name}</div>
+                    <div class="rate-value">${rates[c.code]?.toFixed(2) || '--'}</div>
+                </div>
+            `).join('');
+            const fromSel = document.getElementById('from'), toSel = document.getElementById('to');
+            fromSel.innerHTML = toSel.innerHTML = currencies.map(c => `<option value="${c.code}">${c.code}</option>`).join('') + '<option value="SDG">SDG</option>';
+            fromSel.value = 'USD'; toSel.value = 'SDG';
+            calculate();
+        }
+        function calculate() {
+            let amount = parseFloat(document.getElementById('amount').value) || 0;
+            let from = document.getElementById('from').value;
+            let to = document.getElementById('to').value;
+            let result;
+            const getRate = (code) => code === 'SDG'? 1 : rates[code];
+            if (from === 'SDG') result = amount / getRate(to);
+            else if (to === 'SDG') result = amount * getRate(from);
+            else result = amount * getRate(from) / getRate(to);
+            document.getElementById('result').value = result.toFixed(2);
+            document.getElementById('resultText').innerText = `${amount} ${from} = ${result.toFixed(2)} ${to}`;
+        }
+        function sharePrice() {
+            const text = `سعر الدولار اليوم: ${Math.round(rates.USD)} جنيه سوداني 💵\nشوف كل الأسعار والحاسبة من هنا: ${window.location.href}`;
+            if (navigator.share) {
+                navigator.share({ title: 'سعر الدولار اليوم', text: text });
+            } else {
+                navigator.clipboard.writeText(text);
+                alert('تم نسخ السعر! الصقه في واتساب');
+            }
+        }
+        document.getElementById('amount').addEventListener('input', calculate);
+        document.getElementById('from').addEventListener('change', calculate);
+        document.getElementById('to').addEventListener('change', calculate);
+        loadPrices();
+        setInterval(loadPrices, 300000);
+    </script>
+</body>
+</html>
