@@ -1,79 +1,70 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سعر الدولار اليوم | السودان</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Cairo', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            width: 100%;
-            max-width: 450px;
-            animation: fadeIn 0.6s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 25px;
-        }
-        .header h1 {
-            font-size: 28px;
-            font-weight: 900;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        .main-card {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            border-radius: 24px;
-            padding: 30px 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 20px 40px rgba(17, 153, 142, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        .main-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        .main-card-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-        }
-        .main-card-label {
-            font-size: 15px;
-            opacity: 0.95;
-            margin
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سعر الدولار اليوم | السودان</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px;display:flex;align-items:center;justify-content:center}
+.container{width:100%;max-width:450px;animation:fadeIn 0.6s ease-in}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.header{text-align:center;color:white;margin-bottom:25px}
+.header h1{font-size:28px;font-weight:900;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,0.2)}
+.header p{font-size:14px;opacity:0.9}
+.main-card{background:linear-gradient(135deg,#11998e 0%,#38ef7d 100%);border-radius:24px;padding:30px 25px;margin-bottom:20px;box-shadow:0 20px 40px rgba(17,153,142,0.4);position:relative;overflow:hidden}
+.main-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.main-card-content{position:relative;z-index:1;text-align:center;color:white}
+.main-card-label{font-size:15px;opacity:0.95;margin-bottom:12px;font-weight:600}
+.main-price{font-size:52px;font-weight:900;line-height:1;margin-bottom:12px;text-shadow:0 4px 15px rgba(0,0,0,0.2)}
+.main-price span{font-size:24px;font-weight:600;margin-right:5px}
+.change-badge{background:rgba(255,255,255,0.25);backdrop-filter:blur(10px);padding:8px 18px;border-radius:50px;display:inline-block;font-size:14px;font-weight:700;margin-bottom:15px}
+.update-time{font-size:12px;opacity:0.9;font-weight:600}
+.currencies-list{background:white;border-radius:24px;padding:15px;box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+.currency-item{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;margin:8px 0;background:#f8f9ff;border-radius:16px;transition:all 0.3s ease;border:2px solid transparent}
+.currency-item:hover{transform:translateX(-5px);border-color:#667eea;box-shadow:0 5px 15px rgba(102,126,234,0.2)}
+.currency-left{display:flex;align-items:center;gap:12px}
+.flag{font-size:32px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))}
+.currency-name{font-size:16px;font-weight:700;color:#1a1a2e}
+.currency-price{font-size:20px;font-weight:900;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer{text-align:center;color:white;margin-top:20px;font-size:11px;opacity:0.8;font-weight:600}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>💰 سعر الدولار اليوم</h1>
+<p>مقابل الجنيه السوداني - تحديث لحظي</p>
+</div>
+<div class="main-card">
+<div class="main-card-content">
+<div class="main-card-label">1 دولار أمريكي يساوي</div>
+<div class="main-price">4,300<span>جنيه</span></div>
+<div class="change-badge">▲ +0.00 (0.00%)</div>
+<div class="update-time">آخر تحديث: الخميس، 29 مايو 2026 في 1:50 ص</div>
+</div>
+</div>
+<div class="currencies-list">
+<div class="currency-item">
+<div class="currency-left"><span class="flag">🇺🇸</span><span class="currency-name">دولار أمريكي</span></div>
+<span class="currency-price">4,300.00</span>
+</div>
+<div class="currency-item">
+<div class="currency-left"><span class="flag">🇸🇦</span><span class="currency-name">ريال سعودي</span></div>
+<span class="currency-price">1,140.00</span>
+</div>
+<div class="currency-item">
+<div class="currency-left"><span class="flag">🇦🇪</span><span class="currency-name">درهم إماراتي</span></div>
+<span class="currency-price">1,171.00</span>
+</div>
+<div class="currency-item">
+<div class="currency-left"><span class="flag">🇪🇺</span><span class="currency-name">يورو</span></div>
+<span class="currency-price">5,058.00</span>
+</div>
+</div>
+<div class="footer">* الأسعار من السوق الموازي وقد تختلف بين الولايات</div>
+</div>
+</body>
+</html>
